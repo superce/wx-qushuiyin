@@ -1,0 +1,45 @@
+page{
+background: rgb(252, 251, 251);
+    font-size: 16px;
+    background:url("http://cdn.biaobaiyuan.com/wxapp/bj/star1.png") no-repeat 0 0;
+background-size: 100% auto;
+}
+.neir{
+  margin-top: 50rpx;
+  
+font-size: 24rpx;
+padding: 50rpx 30rpx;
+}
+.title{
+  font-size: 28rpx;
+  padding-bottom: 50rpx;
+}
+.row{
+ margin: 100px 30px;
+  color: #888;
+  background: #f2f2f2;
+   font-size: 14px;
+}
+.rand{
+padding: 10px 30px;
+ border-radius: 12px;
+ float:left;
+}
+.share{
+    background: #f2f2f2;
+   color: #999;
+  border-radius: 12px;
+   float:right;
+   font-size: 14px;
+   font-weight:lighter;
+
+}
+button::after {
+  border: none;
+}
+input{
+    border-bottom: 1px solid #000;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+}

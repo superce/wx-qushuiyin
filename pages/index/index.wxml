@@ -1,0 +1,15 @@
+<view class="container">
+
+<input class="input" placeholder="请输入视频链接" value='{{input}}' bindinput="InputInfo"/>
+
+<view class="neir">
+<view class="title">{{title}}</view>
+<view class="content">{{content}}</view>
+</view>
+
+<view class="row">
+<view bindtap="Tianapi" class="rand">获取数据</view>
+<button class="share" open-type="share">转发分享</button>
+</view>
+
+</view>
