@@ -4,6 +4,7 @@ background: rgb(252, 251, 251);
     background:url("http://cdn.biaobaiyuan.com/wxapp/bj/star1.png") no-repeat 0 0;
 background-size: 100% auto;
 }
+.con{padding: 20rpx 0;}
 .neir{
   margin-top: 50rpx;
   
@@ -41,7 +42,7 @@ input{
   display: flex;
   flex-direction: column;
   width: 90%;
-  margin: 0 auto;
+  margin: 50rpx auto 0;
 }
 .error-input{
   font-size: 12px;
@@ -55,9 +56,13 @@ input{
   border-radius: 10px;
   line-height: 10px;
 }
+.down-video{width: 60px;text-align: center;}
 .info-bottom{
   margin-top: 10px;
   display: flex;
   justify-content: space-around;
-
+}
+.info-down{
+  display: flex;
+  flex-direction: column;
 }

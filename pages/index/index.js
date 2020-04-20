@@ -5,10 +5,11 @@ Page({
   data: {
     input:'',
     // coverImg:'https://dss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3173584241,3533290860&fm=26&gp=0.jpg',
-    playVideo:'', //https://vdept.bdstatic.com/6c74324a335a75436149444d49717270/5375455778314954/df25fef9209a2ecf7c965e49fcb863201b8345dca6f93644d8a61fb8deac104cade8ea2d2dc0827f87b2b97b0c7a1ceb6c94d6f2844249b198bc0f9e4634baac.mp4?auth_key=1587307515-0-0-ea558b609fbcfe4d8d4c570e3bdc2a77
+    playVideo:'https://vdept.bdstatic.com/474d645371344e766b623849497a5945/357869544e337946/a13995a6187abe3752e1ddfbc8ac700331c74ee6b93c782d5fe344d98fe49b5cc3c80be8b8a17fc43ae3d6abc6363cf2c4cc74d7dcff4a236cfe6bfdd0fa7094.mp4?auth_key=1587397924-0-0-4216e46f9fd7e36bed57fd1bfc6979c0',
     content:'',
     title:'',
-    isInputVal:false
+    isInputVal:true,
+    progress:0 // 下载进度
   },
   InputInfo: function (e) {
     console.log(e)
@@ -25,10 +26,6 @@ Page({
       input:''
     })
   },
-  downLoad(){
-    
-    console.log('下载')
-  },
   errorToast(error){
     wx.showToast({
       title: error,
@@ -38,6 +35,9 @@ Page({
   },
   Tianapi: function () {
     let inputVal = this.data.input
+    this.setData({
+      progress:0
+    })
     if(!inputVal){
       this.setData({
         isInputVal:true
@@ -92,31 +92,32 @@ Page({
     
   },
   handleDownload(e) {
-    let link = this.data.playVideo//e.currentTarget.dataset.link;
-    console.log(e)
+    let link = this.data.playVideo;
+    console.log(link)
     let fileName = new Date().valueOf();
-    wx.downloadFile({
+    const downloadTask = wx.downloadFile({
       url: link,
       filePath: wx.env.USER_DATA_PATH + '/' + fileName + '.mp4',
       success: res => {
-        console.log(res);
         let filePath = res.filePath;
         wx.saveVideoToPhotosAlbum({
           filePath,
           success: file => {
-            $Message({
-              content: '下载成功',
-              type: 'success'
+            wx.showToast({
+              title: '视频下载成功',
+              icon: 'success',
+              duration: 5000
             })
             let fileMgr = wx.getFileSystemManager();
             fileMgr.unlink({
               filePath: wx.env.USER_DATA_PATH + '/' + fileName + '.mp4',
               success: function (r) {
-
+                console.log(r)
               },
             })
           },
           fail: err => {
+            console.log('err')
             console.log(err)
             if (err.errMsg === 'saveVideoToPhotosAlbum:fail auth deny') {
               wx.showModal({
@@ -147,6 +148,14 @@ Page({
           }
         })
       }
+    })
+    downloadTask.onProgressUpdate((res) => {
+      this.setData({
+        progress:res.progress
+      })
+      // console.log('下载进度', res.progress)
+      // console.log('已经下载的数据长度', res.totalBytesWritten)
+      // console.log('预期需要下载的数据总长度', res.totalBytesExpectedToWrite)
     })
   },
   onLoad: function () {

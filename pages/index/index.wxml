@@ -1,4 +1,5 @@
 <view class="container">
+  <view class="con">有问题请加微信联系：myselfzoo</view>
   <view class="input-url">
     <view>
       <input class="input" placeholder="请输入视频链接" value='{{input}}' bindinput="InputInfo" />
@@ -15,12 +16,13 @@
     <!-- <video src="{{content}}"></video> -->
     <video wx:if='{{playVideo}}' style="margin: 0 auto;" src="{{playVideo}}"></video>
     <view class="content">{{content}}</view>
-    <view class="down" wx:if='{{playVideo}}'>
-      <span bindtap="handleDownload" data-link="{{video}}">下载视频</span>
-      <button class="downLoad" bindtap="downLoad">下载到本地</button>
+    <view class="down" wx:if='{{playVideo}}' class="info-down">
+      <span bindtap="handleDownload" data-link="{{video}}" class='outline down-video'>下载视频</span>
+      <view wx:if="{{progress!==0}}">
+        <progress percent="{{progress}}" show-info active color="#00BCD4"/>
+      </view>
     </view>
   </view>
-
   <view class="row">
     <button class="share" open-type="share">转发分享</button>
   </view>
