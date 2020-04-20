@@ -20,19 +20,13 @@ padding: 50rpx 30rpx;
   background: #f2f2f2;
    font-size: 14px;
 }
-.rand{
-padding: 10px 30px;
- border-radius: 12px;
- float:left;
-}
 .share{
-    background: #f2f2f2;
-   color: #999;
+  background: #f2f2f2;
+  color: #999;
   border-radius: 12px;
-   float:right;
-   font-size: 14px;
-   font-weight:lighter;
-
+  float:right;
+  font-size: 14px;
+  font-weight:lighter;
 }
 button::after {
   border: none;
@@ -42,4 +36,28 @@ input{
     border-top: 0px;
     border-left: 0px;
     border-right: 0px;
+}
+.input-url{
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  margin: 0 auto;
+}
+.error-input{
+  font-size: 12px;
+  color: #D32F2F;
+}
+.outline{
+  background: #00BCD4;
+  padding: 7px;
+  font-size: 12px;
+  color: #fff;
+  border-radius: 10px;
+  line-height: 10px;
+}
+.info-bottom{
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-around;
+
 }

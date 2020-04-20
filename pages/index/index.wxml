@@ -1,15 +1,28 @@
 <view class="container">
+  <view class="input-url">
+    <view>
+      <input class="input" placeholder="请输入视频链接" value='{{input}}' bindinput="InputInfo" />
+    </view>
+    <view class="info-bottom">
+      <view bindtap="Tianapi" class="rand outline">解析视频</view>
+      <view bindtap="clearInput" class="clear-input outline">清空链接</view>
+    </view>
+  </view>
+  <view class="neir">
+    <view class="title">{{title}}</view>
+    <!-- <image src="{{coverImg}}"></image> -->
+    <!-- <video wx:if='{{playVideo}}' src="{{playVideo}}"></video> -->
+    <!-- <video src="{{content}}"></video> -->
+    <video wx:if='{{playVideo}}' style="margin: 0 auto;" src="{{playVideo}}"></video>
+    <view class="content">{{content}}</view>
+    <view class="down" wx:if='{{playVideo}}'>
+      <span bindtap="handleDownload" data-link="{{video}}">下载视频</span>
+      <button class="downLoad" bindtap="downLoad">下载到本地</button>
+    </view>
+  </view>
 
-<input class="input" placeholder="请输入视频链接" value='{{input}}' bindinput="InputInfo"/>
-
-<view class="neir">
-<view class="title">{{title}}</view>
-<view class="content">{{content}}</view>
-</view>
-
-<view class="row">
-<view bindtap="Tianapi" class="rand">获取数据</view>
-<button class="share" open-type="share">转发分享</button>
-</view>
+  <view class="row">
+    <button class="share" open-type="share">转发分享</button>
+  </view>
 
 </view>
